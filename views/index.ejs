@@ -1,0 +1,25 @@
+<%- include("template/cabecera", {tituloWeb: 'Inicio Veterinaria' }) %>
+
+  <div class="container text-center col-3">
+
+    <h1 class="text-primary">Inicio de Sesion</h1>
+
+    <h2>
+      <%= titulo %>
+    </h2>
+
+    <form action="user/login" method="post">
+      <div class="form-outline mb-4"> Introduce tu Email <input type="email" id="email" class="form-control"
+          name="email" value="jhonnuevo@gmail.com" placeholder="example@gmail.com" />
+      </div>
+
+      <div class="form-outline mb-4">
+        Contraseña
+        <input type="password" id="password" class="form-control" name="password" value="jhonnuevo" placeholder="Tu contraseña"/>
+
+      </div>
+      <button type="submit" id="boton" class="btn btn-dark btn-block mb-4">Entrar</button>
+  </div>
+  </form>
+  </div>
+  <%- include("template/footer") %>

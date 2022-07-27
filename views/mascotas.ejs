@@ -1,0 +1,82 @@
+<%- include("template/cabecera", {tituloWeb: 'Página de Inicio Cliente' }) %>
+
+    <div class="container">
+        <h1>Felicidades te has logueado exitosamente</h1>
+        <hr>
+        <a class="btn btn-primary" href="mascotas/agregarMascota" ROLE="button"> Ingresar nueva mascota </a>
+    </div>
+    <br>
+    <div class="container">
+        <h2>Mascotas</h2>
+
+        <table class="table" style="background-color: white !important; border-radius: 5px;">
+
+            <thead>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre Mascota</th>
+                <th scope="col">Raza</th>
+                <th scope="col">Fecha Nacimiento</th>
+                <th scope="col">Nombre del Dueño</th>
+                <th scope="col">ACCIÓN</th>
+            </thead>
+            <tbody>
+                <div>
+                    <% if (arrayClientes.length>0) { %>
+                        <% arrayClientes.forEach( mascotas=> { %>
+                            <tr>
+                                <th>
+                                    <%= mascotas.id %>
+                                </th>
+                                <th>
+                                    <%= mascotas.nombre %>
+                                </th>
+                                <th>
+                                    <%= mascotas.raza %>
+                                </th>
+                                <th>
+                                    <%= mascotas.fecha_nacimiento %>
+                                </th>
+                                <th>
+                                    <%= mascotas.nombre_dueno %>
+                                </th>
+
+                                <th>
+                                    <a class="btn btn-primary btn-sm" href="mascotas/verMascota/<%= mascotas.id %>"
+                                        rol="button">
+                                        Modificar Mascota
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="javascript:eliminar('<%= mascotas.id %>');"
+                                        rol="button">
+                                        Eliminar Mascota
+                                    </a>
+                                </th>
+                            </tr>
+                            <% }) %>
+                                <% } %>
+                </div>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script>
+        async function eliminar(paramID) {
+
+            try {
+
+                const data = await fetch(`/mascotas/${paramID}`, {
+                    method: 'delete'
+                });
+
+                window.location.href = '/mascotas';
+
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+    </script>
+
+    <%- include("template/footer") %>

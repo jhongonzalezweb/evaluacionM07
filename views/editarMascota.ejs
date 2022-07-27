@@ -1,0 +1,28 @@
+<%- include("template/cabecera", {tituloWeb: 'Página Editar Cliente' }) %>
+
+    <div class="container">
+
+        <h1>Editar Mascota</h1>
+
+        <form action="editarMascota" class="my-2" method="POST">
+
+            <input type="text" placeholder="Ingrese Nombre de la Mascota" class="form-control my-2" name="nombre"
+                value="<%= nombre %>">
+
+            <input type="text" placeholder="Ingrese La Raza" class="form-control my-2" name="raza" value="<%= raza %>">
+
+            <input type="text" placeholder="Fecha Nacimiento Mascota" class="form-control my-2" name="fecha_nacimiento"
+                value="<%= fecha_nacimiento %>">
+
+            <input type="text" placeholder="Ingrese Dueño" class="form-control my-2" name="nombre_dueno"
+                value="<%= nombre_dueno %>">
+
+            <button type="submit" class="btn btn-dark btn-block"> Modificar Mascota </button>
+
+            <input type="hidden" name="id" value="<%= id %>">
+
+        </form>
+
+    </div>
+
+    <%- include("template/footer") %>
